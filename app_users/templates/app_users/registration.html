@@ -1,0 +1,20 @@
+<!-- If user registered succesfully we will show thank you for regsitering or else pass the user to fill the form-->
+{% extends 'home.html' %}
+
+{% block content %}
+
+{% if registered %}
+<h1> Thank You for regsitering</h1>
+    {% else %}
+        <h3>Fill the Form :</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Basically prints out all the fields that we need to showed and fill for a current user-->
+            {{ user_form }}
+            {{ profile_form }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+        
+        </form>
+    {% endif %}
+
+{% endblock %}
